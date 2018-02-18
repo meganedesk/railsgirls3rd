@@ -24,8 +24,29 @@
       </tr>
     <% end %>
   </tbody>
-</table>
-
+  
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <% @ideas.each_with_index do |idea, index| %>     
+     <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
+    <% end %>   
+  </ol>
+  <div class="carousel-inner">
+    <% @ideas.each_with_index do |idea, index| %>    
+    <div class="carousel-item <%= 'active' if index == 0 %>" </di>
+      <%= image_tag(idea.picture_url, width: 90, class:"d-block w-100") if idea.picture.present? %>
+    </div>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 <br>
 
 <%= link_to 'New Idea', new_idea_path ,{class:'btn btn-outline-primary btn-lg'} %>
